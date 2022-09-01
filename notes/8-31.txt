@@ -1,0 +1,225 @@
+real-time rendering vs. offline rendering
+interactive	non-interactive
+
+efficient GPU usage allows increasingly complex graphics for real-time interaction
+
+Computer Graphics:
+Creating images with a computer using:
+-hardware
+-software
+-applications
+
+Application:
+artist rendition to be animated
+
+Software:
+Maya for modeling and rendering but maya is built on top of opengl
+
+Hardware:
+PC with graphics card for modeling and rendering
+
+input->CPU->GPU->FrameBuffer->Monitor
+	|	|
+	CPU	GPU
+	MEM	MEM
+
+Output Devices and history:
+CRT (Cathode Ray Tube)
+Same drawing concept of oscilloscope
+-line drawing device(calligraphic mode)
+-display contents of frame buffer(raster mode)
+
+50s 60s:
+-strip charts
+-pen plotters
+-simple displays (A/D converter) 
+
+-High cost, slow, unreliable
+
+60s 70s:
+-Decoupled logic of program from logic of displaying
+-Display processors
+-Method: Storage tubes
+
+Ivan Sutherland, Grandfather of CG
+-man-machine interaction
+-Sketchpad
+	-loop
+		-display something
+		-user moves light pen
+		-cg new display
+
+Display processor (DPU)
+-Host->DPU->CRT
+	|
+	Display
+	List
+
+-Host compiles display list, DPU responsibility to process and produce signal
+-Display list needs to be compiled and ran (Still do this to this day)
+
+70s 80s:
+Raster graphics
+interpolated between vertices, this never allowed for perfectly smooth
+beginning of graphics standards
+-ifips
+	-GKS european
+		iso 2d standard
+	-core na effort
+		3d but fails to become iso
+workstations and oc
+
+Raster image is just a matrix or array of picture elements in the frame buffer
+
+raster allowed a whole image filled and intermediarily shaded
+
+workstations:
+	-client server mechanism
+	-high level of interaction
+	-work done offline on a server
+
+pcs:
+	-frame buffer as part of user memory
+	-easy to change contents and create images
+
+80s 90s:
+Realism era:
+	-smooth shading
+		-removed limitation of vertex interpolation 		as far as smoothing
+	-environment mapping
+		-ray tracing
+	-bump mapping
+
+Special purpose hardware:
+	Silicon Graphics Geometry engine
+		VLSI impl of the graphics pipeline
+		Highly sophiscticated transistor circuits for linear algebra
+
+industry based standards
+
+90s 00s:
+	OpenGL API
+	CG movies (Toy story )
+	new hardware capabilities
+		-texture mapping
+		-blending
+		-accumulation, stencil buffers
+
+	Enables more photorealism by leveraging linear algebra
+
+00s:
+photorealism
+until 04, everything was hardcoded linera algebra (OpenGL)
+then standardized shader programs and interface, an API for us! (Programmable pipelines)
+GPU cards dominate:
+Nvidia, ATI
+
+The Rendering Pipeline (in between CPU handoff and blit)
+
+Tessellation-> take original vertices, and virtually de-alias implicit intermediary vertices
+
+determine 2d shape concerned with set of vertices, pass off to fragment shader, ect... 2d framebuffer voila
+
+Image Formation:
+Elements:
+	-Objects
+	-Viewer
+	-Light Source
+Treat these things independently as they sipport rendering efficiency
+
+
+Light:
+	-part of the elctromagnetic spectrum that causes a visual reaction in our visual systems (350-750 nm)
+
+	Ultraviolet<-Long(reds)<-> Short(blues) ->Infrared
+
+Energy distribution  (Luminance vs. color):
+Luminance
+	-Monochromatic
+	-values are gray levels
+	-analogous to to working with b&w
+
+Color Gamut
+Chromatisity (x&y)
+	-has perceptional attributes of hue, saturation, and lightness
+	-do we have to match every frequency in the visible spectrum? no!
+
+Chromatisity range is governed by types of phosphors used, nowadays its the LEDs used
+
+Human Visual System
+	-VR headset calibration for personal health
+	-identify the color gamut range (chromatisity) of a particular person, and how to stimulate the eye to create a standard output image
+
+	-Rods
+		Monochromatic, night vision
+	-cones
+		color sensitive
+
+	Retina (your photoreceptors)
+		-s, m, l cones
+			-tristimulus array sent to your brain
+		-rods
+		
+-need only three primary colors because we see 3 colors and the combination of them in between
+
+concepts:
+fovea,
+blind spot
+retina
+iris
+cornea
+lens
+iris
+optic nerves
+focea
+
+no cones in peripheral i.e. middle 30 degree cone
+inverse for rods
+
+all to recreate the exact way in which people see
+
+Additive color:
+	Form a color by adding three primaries
+		CRT projection systems positive film
+
+Subtractive color
+	Form a color by filtering white light with cyam and magenta and yellow filters
+		
+	-light material interactions
+	-printing
+	-negative films
+
+Viewer:
+Pinhole Camera: 3D to 2D
+Equations of a simple perspective:
+trigonometry to find projection of point at x,y,z
+	-xp = -xd/z
+	-yp = -yd/z
+	-zp = d 
+newtonian (straight vs. who kepler?)
+
+reverse projection at d, it inverts (180 degree rotate and opposite distance in front), just move pinhol back by og distance d?
+
+Seperation of objects, viewer, and light source
+	-Model viewer projection matrices
+
+All leads to simple software API and fast hardware implementation
+
+Lighting
+Global vs local lighting 
+	-cannot compute color or shade of each object independently
+
+	blocked objects
+	reclection
+	opacity and transluscency
+	
+incredibly interdependent!!! 
+
+
+Ray tracing and Geometric optics
+
+rasterization, computer color, then apply lighting
+GPUs are ready for you in this regard
+
+ray tracing, look at each pixel, shine a light through it, create secondary light explosion of lines, determine other visible object. slow and difficult but is the future
+

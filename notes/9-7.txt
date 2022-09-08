@@ -1,0 +1,131 @@
+4:01 PM 9/7/2022
+
+Graphics primitives
+
+-points
+-line segments
+-polygons
+-some curves and surfaces
+	-quadrics
+	-parametric polynomials
+
+Camera spec:
+6 degress of freedom:
+	-position of center of the lens (CoP)
+	-Orientation
+
+Lens
+Film Size
+Orientation of film plane
+
+Clipping of View Volume
+-used to isolate important computation from unnecessary
+
+Mathematical foundations:
+End of rendering pipeline=2d raster (collection of pixels)
+each pixel is a combination of some amount of r, some amount of g, and some amount b
+
+i.e. a 2d-matrix
+
+on hardware, 
+
+it's a 1-d array of scan-line ordered, pixel data
+	-interleaved
+		-done on cpu mostly
+		-pixels we want to talk about collectively 		may have large range gaps
+		-this makes it difficult to cache efficiently
+	-swizzled (z-order)
+		-better cache perf
+		-mostly done by gpus
+
+color[y* width + x]
+
+32-bit, Red, Green, Blue, Alpha
+
+n-dimenstional vector (column vector of size n)
+transpose (to row vector of size n)
+magnitude = in euclidean space, the hypotenuse of coordinate combination i.e. length
+normalization=produces a unit vector of length 1 unit
+inner (dot) product (v1.v2)===(v1T.v2)->scalar value that produces the projection of v1 onto v2
+dot product, in combo with magnitudes, can tell us their relational theta
+
+vector(cross product) product given v1T, v2T
+prove the eq, use the law of cosines=gives normal vector
+
+determinant of the 3x3
+
+sign of costheta tells us angle is
+	acute
+	obtuse
+	right
+
+
+At somepoint, distinguish between points and vectors
+
+Vector Uses:
+	data
+		pixels, gradients
+		no geometric interpretation
+
+	geometric representation
+		2d or 3d offsets
+homogeneous coord systems are related in discernation
+
+
+orthogonal (set of vectors, where the dot product of each pair  = 0) basically all are 90 degrees from one another (i,j,k vectors of any mag)
+orthonormal (ij,k of unit mag)
+
+space spanning
+
+linear dependence
+	set of vecs, at least one is a linear combination of 	the others
+linear independence
+	set of vecs, no one is a linear combination of the 	others
+
+Vector space
+	vector basis
+	set of vectors can be a basis for a space if
+		linearly independent
+		span
+	
+	standard bases
+		i,j (1,0), (0,1) 
+		i,j,k, (1,0,0)(0,1,0)(0,0,1)
+
+	dot product with itself = 1 =unit
+	dot product with others  = 0
+
+	All the prior aids and makes vector expansion 	trivial
+	
+	xi = v . vi/ vi . vi == v.vi == v (trivial)
+
+
+matrix mxn (rows, columns)
+	m=n (square)
+
+operations
+	addition/subtraction
+	scaling(multiplying by constant)
+	multiplication(not commutative)[n=q]
+
+identity matrix
+	diagonal matrix
+	any matrix multiplied by this is itself
+
+matrix transpose
+	rows become columns
+	columns become rows
+
+symmetric matrix
+	a matrix that is equal to its own transpose
+	4 , 5, -3
+	5, 7, 2
+	-3, 2, 10
+	A times AT = a matrix always symmetric
+	AT times A =a amtrix always symmetric
+	
+geometric transformations
+	translation
+		avoiding matrix addition for translation?
+	scaling
+	rotation

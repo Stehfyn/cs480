@@ -1,0 +1,89 @@
+4:09 PM 9/12/2022
+
+Practice mtraix multiplication as you approach triviality
+
+Graphics libraries
+opengl
+Math Libraries
+glut
+Windowing/Input Libraries
+glfw
+
+matrix mult:
+rows math columns
+n=q
+i.e. AB
+and AB!=BA
+
+3x3 matrix determination,  off diagonals, parallels of diagonals
+
+aei+bfg+cdh
+-ceg-ahf-bdi
+
+transposition property, order matters
+(AB)^T = b^TA^T
+
+inverse:
+(AB)'=B'A'
+
+
+Symmetric matrices:
+A=A^T
+
+matrices that are equal to their own transpose 
+mirrored along their diagonal
+
+Matrices represent a poweful way to model geometric transformations
+
+Translation (2D)
+-any translation can be represented by some vector T
+
+newX=X+vX 
+newY=Y+vY
+
+Adding is slow
+How can we use multiplication to achieve translation?
+
+Scaling(2D)
+newX = sX*X
+newY = sY*Y
+or
+|x'| = |sX  0| |x|
+|y'| = |0  sY| |y|
+
+Rotation about origin by angle theta
+
+	in 2D(theta is counter clockwise)
+		x=rcosphi
+		y=rsinphi
+
+
+
+	matrix form:
+			(rotation matrix) each column is a unit vector column, each one is one
+		|x'| = |costheta -sintheta| |x|
+		|y'|= |sintheta costheta| |y|
+		rotation matrices are bothe orthogonal and orthonormal
+		
+		inverse of orthonormal is equal to its transpose
+
+
+
+	Eigenvalues and Eigenvectors:
+		Eigen value is the scale, eigenvector is the diagonal matrix consisting of thar scale factor, i.e. identity matrix times scale,
+			used to simplify transformations into matrix multiplication
+
+	
+	Av=lambav
+	A=vector, lambda =scalar
+
+	transformations in an n-dimensional space is an nxn matrix multiplcation
+	
+	Calculation:
+	det(A-lambdaI)
+	det(A-lambdaI)=0
+	
+	solve systems of eigenfunctions
+
+	essentially, effectively, recreate the same transformations in a reduced amount of steps, through rotation, scalar, rotation scaler .. sequence of primitives
+	rotation, scale, translate

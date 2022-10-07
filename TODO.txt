@@ -1,2 +1,4 @@
 TODO:
+	Implement buildstep that moves glew32.dll into project out path
 	Refactor and implement additional repo helper scripts
+	

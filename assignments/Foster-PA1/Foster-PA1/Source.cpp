@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
 	GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-	const char* vShaderSrc = "#version 460 \n void main() { gl_position = vec4(0.0,0.0,0.0,1.0);} ";
+	const char* vShaderSrc = "#version 460 \n void main() { gl_Position = vec4(0.0,0.0,0.0,1.0);} "; // 10/10 gl_position -> gl_Position
 	const char* fShaderSrc = "#version 460 \n out vec4 color void main() { color = vec4(0.0,0.3,1.0,1.0);} ";
 
 	glShaderSource(vShader, 1, &vShaderSrc, NULL);

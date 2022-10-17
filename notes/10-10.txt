@@ -1,0 +1,34 @@
+4:09 PM 10/10/2022
+3 transformations from model to view space.
+-Model/Object Space ;= M
+-World/Scene Space :=
+-Camera/View Space := 
+
+gl_Position(Projection * V * M * P);
+M ==> dependent on ==> Object world
+TRS, Transformation, Rotation, Scale matrices
+
+V ==> dependent on ==> Camera world
+Projection ==> Intrinsically Camera
+
+
+Example: Orthographic Projection rays are parallel from camera surface
+D' = M0D
+
+x'	????    |x
+y'	????    |y
+z'	????    |z
+1	0001 |1
+
+Scale matrix combined with a transformation matrix
+x'	? 0 0 ?    |x
+y'	0 ? 0 ?    |y
+z'	0 0 ? ?    |z
+1	0 0 0 1   |1
+
+?11 := 2/R-L  
+?12(-2L/R-L)-1
+
+
+Perspective Projection: Light rays converge at center of projection
+D' - MpD

@@ -13,5 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{1076ce33-d4e0-4ea2-948b-1918339fae75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\sources">
+      <UniqueIdentifier>{8d3995d8-45ef-4e40-b4fd-59363a17e4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\imgui">
+      <UniqueIdentifier>{5be18438-3626-4a32-9f74-0c9f5110110a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>imgui\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>imgui\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\imgui.cpp">
+      <Filter>imgui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\imgui_demo.cpp">
+      <Filter>imgui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\imgui_draw.cpp">
+      <Filter>imgui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\imgui_tables.cpp">
+      <Filter>imgui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vendor\include\imgui\imgui_widgets.cpp">
+      <Filter>imgui\imgui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\vendor\include\imgui\backends\imgui_impl_glfw.h">
+      <Filter>imgui\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>imgui\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>imgui\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\imconfig.h">
+      <Filter>imgui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\imgui.h">
+      <Filter>imgui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\imgui_internal.h">
+      <Filter>imgui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\imstb_rectpack.h">
+      <Filter>imgui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\imstb_textedit.h">
+      <Filter>imgui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vendor\include\imgui\imstb_truetype.h">
+      <Filter>imgui\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

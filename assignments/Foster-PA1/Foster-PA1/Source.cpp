@@ -10,8 +10,8 @@
 #pragma comment(lib, "soil2-debug")
 
 #include <iostream>
-#include <glew-2.1.0/glew.h>
-#include <glfw-3.3.8/glfw3.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 //#include <glew-2.1.0/glu.h> //Not wrangled by glew, see https://stackoverflow.com/a/3933593 && https://stackoverflow.com/a/73303899
 #include <GL/GLU.h>           //Windows SDK, at "C:\Program Files\Microsoft SDKs\Windows\vX.XA\Include\gl", see https://stackoverflow.com/a/3933593
 

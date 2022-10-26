@@ -1,0 +1,57 @@
+3:55 PM 10/19/2022
+Gluint shaderprog = glCreateProgram()
+allocates memory for my program, then returns to me a Gluint value to the beginning of that memory range on my gpu
+returns 0 on fail
+
+char* vsSource = ReadFromFile("something.glsl")
+Gluint vs = glCrwateShader();
+glShaderSource(vs, 1, vsSource, nullptr); //creates a pipeline for where your shader is in cpu stack to where it should go on gpu, transfer
+glCompileShader(vs); //compile from gpu address
+glAttachShader(shaderprog, vs); //two address on gpu. attach shader code to shader program memory
+delete[] vsSource;
+
+//same step for fragment shader
+
+//then link GPU shaders
+glLinkProgram(shaderprog) creates obj files for it
+glGetProgramiv(shaderprog, GL_LINK_STATUS, &success)
+success ==0 //error link
+glValidateProgram(shaderprog)
+glGetProgramiv(...)
+success == 0 //invalid shader program
+
+//make sure to read docs and impl all error handling
+
+//pass objects to GPU
+//objs are collection of points
+//next lect is triangular meshes
+//for now constants on "how to read these vertices", changes the relationship on how to treat these vertices
+
+//GL_POINTS,
+// GL_LINES,  (by pairs of vertices)
+//GL_LINE_STRIP (each line strip, from vert 1 to 2, 2 to 3)
+// GL_LINE_LOOP (same as line strip, but also connects to last)
+//GL_TRIANGLES  (GL_LINES, by triple pairs)
+//GL_TRIANGLE_STRIP  ()
+//GL_TRIANGLE_FAN (unique combinations of triangles just for start vertex)
+
+glDrawArrays() vs glDrawElements()
+a dumb way to draw, vs a faster way to draw
+
+alloc vertexbuffer on gpu
+bind it to some loc on cpu
+then transfer call, transfer on every new frame
+
+1.allocate vb for each vertext attribute (color, position, whatever)
+2.bind vao to vbo 
+3.point
+4.transfer
+5.define (in glsl program)
+represent your object as an array of structures [one 2D array], or structure of arrays[] -> they are important for how  you parallelize your operations
+
+individual kernels to have access to their neighbors, gl can put data in gpu shared memory so individual kernels can share data
+Uniform variable
+
+cube render with array buffer rendering
+cube render with element array rendering
+

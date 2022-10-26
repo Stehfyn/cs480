@@ -1,0 +1,122 @@
+4:05 PM 10/17/2022
+
+GPU Pipelines:
+
+Viewing pipeline:
+Vertices in View frustum, converts them to canonical space of camera
+vertices from model space->world space->canonical camera space
+each vertex with an x,y based in canonical view volume from -1.0 to 1.0
+
+Rasterization pipeline:
+From 3 vertices, their x,y values, compute values from combinations
+Barycentric coordinates
+
+Ways to draw
+1).CPU, hand draw,
+2).CPU that utilizes display driver api that drives crt gun to draw
+3).GPU sits between CPU and display driver, receives M rows, N columns, , crafts framebuffer that gets copied
+to display driver and displayed. Output of a GPU is a matrix with RGBA values.
+Opacity, Translucensy
+
+Graphics programming utilizing GPU is just "setting things up"
+
+Old GPU pipeline
+Integrated Circuit that facilitates efficient matrix multiplication for transforms and lighting
+	-These are my lighting params, my model matrix, my view matrix, my vertices
+	-Canonical pixel colors/locations computed
+Primitive setup and Rasterization, how to connect vertices, then go through the barycentric coordinates
+	-then z buffer render
+Fragment Coloring and Texture: Fragments are pixels, sections, that need their color computed
+	-Texture of brick passed (image data), then texture mapping YZ, US, then UV coordinates
+	-Modern is texture sampling
+Blending, Smoosh colors together
+
+Fixed Function GPU pipeline:
+Sequential:
+Vertex Transform-> primitive setup and rasterization-> fragment and coloring and texturing- >blending
+
+The Programmable GPU pipeline:
+Vertex Shader -> Primitive Setup and Rasterization-> Fragment Shader -> Blending
+
+Programmable gives us full control of calculation in viewing stage, then full control lighting/coloring stage
+You can code implicit relationships here, as you have control of the stages (bend light in interesting ways)
+
+Vertex Data (sets of triangles)
+Vertex Shader stage (kernel that runs parallelized per vertex shading) computes vertices (SIMD), you have access to world space data
+can do weird anti-aliasing
+
+Fragment Shader(Screen Space)
+
+
+Optional Shaders:
+No Geometry shader
+Per vertex just disregard geometry raltionship of vertex in order to parallelize
+Optional Geometry shader
+we can talk about vertices after the shader phase in order to parallelized transformations on per geometry
+
+Tessellation Shader in between vertex shader and geometry shader
+increase detail of geometry by implicitly deriving new vertices
+
+NVidia turing architecture, optional stage
+
+Mesh Shading stage
+vertex data->mesh shader->primitive setup and rasterization-> fragment shader->blender
+Per mesh shading, collections of geometry related to one another, can message pass to parallelize and synchronize
+processing
+
+Class is sticking to Programmable pipeline, working textures in later
+
+OpenGL 1.0, July 1st, 1994
+Fixed Function pipeline
+Pass Model, view parameters, fixed
+
+OpenGL2.0 2004
+Programmable pipelines
+Fixed Function was still available
+
+OpenGL3.0 introudcued the deprecation model, the methods used to remove features of OpenGL
+Glew helps
+
+OpenGL 3.1
+removed fixed-function pipeline
+all data is GPU resident, via buffer objects
+
+OpenGL 3.2
+Context Profiles
+Geometry Shader
+Tesla/Kepler architecture
+
+OpenGL 4.1
+Tessellation-control, tessellation evaluation
+
+OpenGL
+Mesh shading only supported with turing architecture
+
+Embedded system 
+OpenGL ES 2.0
+
+WebGL
+Javascript implementation of ES 2.0
+
+Modern OpenGL do:
+-Create shader programs
+-create buffer objects and load data into them
+-Connect data locations with shader variables
+-Render
+
+Application Framework:
+Glfw
+
+OS deal with library functions differently, compiled linkage and runtime libraries may expose different functions
+geometry:long text file
+modeling programs produce them like this structure
+a vertex:
+	position 4 dimensional homogeneous
+	colors
+	textures
+	any other associatd data
+
+Vertex data os stored in VBOs vertex buffer objects
+VBOs are stored in vertex array objects VAOs
+Get VBO, point it to vertices, program shader, render object
+at least one VAO

@@ -1,4 +1,6 @@
 TODO:
-	Implement buildstep that moves glew32.dll into project out path
+	Implement buildstep that moves glew32.dll into project out path (10/25/22)
 	Refactor and implement additional repo helper scripts
+	Move .props into proper folder
+	Create and add visual studio template from GraphicsTemplate.sln
 	

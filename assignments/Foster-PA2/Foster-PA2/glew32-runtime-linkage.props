@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <GLEW32DLL>$(SolutionDir)..\vendor\lib\glew32.dll</GLEW32DLL>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CopyFileAfterTargets>Build</CopyFileAfterTargets>
+    <CopyFileBeforeTargets />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Command>if EXIST "$(GLEW32DLL)" xcopy /Y /F "$(GLEW32DLL)" "$(OutDir)"</Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)glew32.dll</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Inputs>$(GLEW32DLL)</Inputs>
+      <Message>Copying glew32.dll into output directory...</Message>
+    </CustomBuildStep>
+    <CopyFileToFolders>
+      <RootFolder>$(GLEW32DLL)</RootFolder>
+    </CopyFileToFolders>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="GLEW32DLL">
+      <Value>$(GLEW32DLL)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

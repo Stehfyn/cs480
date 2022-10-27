@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <assert.h>
 
 Engine::Engine(const char* name, int width, int height)
 {
@@ -36,7 +37,7 @@ bool Engine::Initialize()
     return false;
   }
 
- 
+  m_currentTimeMillis = GetCurrentTimeMillis();
   // No errors
   return true;
 }
@@ -79,14 +80,15 @@ void Engine::ProcessInput()
 
 }
 
-unsigned int Engine::getDT()
+long long Engine::getDT()
 {
-  //long long TimeNowMillis = GetCurrentTimeMillis();
-  //assert(TimeNowMillis >= m_currentTimeMillis);
-  //unsigned int DeltaTimeMillis = (unsigned int)(TimeNowMillis - m_currentTimeMillis);
-  //m_currentTimeMillis = TimeNowMillis;
-  //return DeltaTimeMillis;
-    return glfwGetTime();
+  long long TimeNowMillis = GetCurrentTimeMillis();
+  assert(TimeNowMillis >= m_currentTimeMillis);
+  unsigned int DeltaTimeMillis = (unsigned int)(TimeNowMillis - m_currentTimeMillis);
+  m_currentTimeMillis = TimeNowMillis;
+  HZ_CORE_TRACE("{0}", DeltaTimeMillis);
+  return DeltaTimeMillis;
+  //return glfwGetTime();
 }
 
 long long Engine::GetCurrentTimeMillis()
@@ -104,5 +106,5 @@ void Engine::Display(GLFWwindow* window, double time) {
 
     m_window->Swap();
 
-    m_graphics->Update(time, speed);
+    m_graphics->Update(getDT(), speed);
 }

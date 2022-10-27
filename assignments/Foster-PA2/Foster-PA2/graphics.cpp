@@ -84,6 +84,9 @@ bool Graphics::Initialize(int width, int height)
   m_triangle = new Object();
   m_triangle->Initialize(m_vertPos, m_vertCol);
 
+  m_cube = new Cube();
+  m_cube->Initialize(m_vertPos, m_vertCol);
+  m_cube->createVertices();
   
   //enable depth testing
   glEnable(GL_DEPTH_TEST);
@@ -92,11 +95,11 @@ bool Graphics::Initialize(int width, int height)
   return true;
 }
 
-void Graphics::Update(unsigned int dt, glm::vec3 speed)
+void Graphics::Update(long long dt, glm::vec3 speed)
 {
   // Update the object
   m_triangle->Update(dt);
-
+  m_cube->Update(dt);
 }
 
 void Graphics::Render()
@@ -114,8 +117,9 @@ void Graphics::Render()
 
   // Render the object
   glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_triangle->GetModel()));
-  m_triangle->Render(m_vertPos,m_vertCol);
-
+  m_triangle->Render(m_vertPos, m_vertCol);
+  glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_cube->GetModel()));
+  m_cube->Render(m_vertPos, m_vertCol);
 
 
   // Get any errors from OpenGL

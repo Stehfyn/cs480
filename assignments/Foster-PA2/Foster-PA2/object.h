@@ -10,24 +10,25 @@ class Object
     Object();
     ~Object();
     void Initialize(GLint posAttribLoc, GLint colAttribLoc);
-    void Update(unsigned int dt);
+    virtual void Update(long long dt);
     void Render(GLint posAttribLoc, GLint colAttribLoc);
-    void createVertices();
+    virtual void createVertices();
 
     glm::mat4 GetModel();
 
     void setSpeed(glm::vec3 spd) { m_speed = spd; }
 
-  private:
+  protected:
     glm::mat4 model;
+
     std::vector<Vertex> Vertices;
     std::vector<unsigned int> Indices;
-
+  private:
     GLuint vao;
 
     GLuint VB;
     GLuint IB;
-
+protected:
     glm::vec3 m_speed = glm::vec3(0., 0., 0.);
 
     float angle;

@@ -15,7 +15,7 @@ class Engine
     bool Initialize();
     void Run();
     void ProcessInput();
-    unsigned int getDT();
+    long long getDT();
     long long GetCurrentTimeMillis();
     void Display(GLFWwindow*, double);
 
@@ -37,6 +37,7 @@ class Engine
     Graphics *m_graphics;
 
     bool m_running;
+    long long m_currentTimeMillis;
 };
 
 #endif // ENGINE_H

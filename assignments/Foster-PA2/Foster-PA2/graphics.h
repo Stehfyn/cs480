@@ -8,6 +8,7 @@ using namespace std;
 #include "camera.h"
 #include "shader.h"
 #include "object.h"
+#include "cube.h"
 
 class Graphics
 {
@@ -15,7 +16,7 @@ class Graphics
     Graphics();
     ~Graphics();
     bool Initialize(int width, int height);
-    void Update(unsigned int dt, glm::vec3 speed);
+    void Update(long long dt, glm::vec3 speed);
     void Render();
 
     Object* getInteractWith();
@@ -35,6 +36,7 @@ class Graphics
     GLint m_vertCol;
 
     Object* m_triangle;
+    Object* m_cube;
 
 };
 

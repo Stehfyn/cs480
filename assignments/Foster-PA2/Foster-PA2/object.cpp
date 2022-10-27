@@ -70,12 +70,11 @@ Object::~Object()
 	Indices.clear();
 }
 
-void Object::Update(unsigned int dt)
+void Object::Update(long long dt)
 {
 
 	
 	model = glm::translate(model, m_speed);
-	
 	//To Do: Extra credit / Grad Only
 	//	Make the object move in a circle around the origin
 

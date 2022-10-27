@@ -175,6 +175,7 @@
     <ClCompile Include="..\..\vendor\include\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\..\vendor\include\imgui\imgui_widgets.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -294,6 +295,7 @@
     <ClInclude Include="..\..\vendor\include\spdlog\version.h" />
     <ClInclude Include="Base.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="Cube.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="graphics_headers.h" />

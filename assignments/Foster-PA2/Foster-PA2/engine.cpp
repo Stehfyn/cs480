@@ -20,7 +20,7 @@ Engine::~Engine()
 
 bool Engine::Initialize()
 {
-  Hazel::Log::Init();
+
   // Start a window
   m_window = new Window(m_WINDOW_NAME, &m_WINDOW_WIDTH, &m_WINDOW_HEIGHT);
   if(!m_window->Initialize())
@@ -52,7 +52,7 @@ void Engine::Run()
       ProcessInput();
       Display(m_window->getWindow(), glfwGetTime());
       glfwPollEvents();
-      HZ_CORE_TRACE("gflwPollEvents");
+
   }
   m_running = false;
 

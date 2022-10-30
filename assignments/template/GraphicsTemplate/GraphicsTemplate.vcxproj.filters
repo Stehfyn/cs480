@@ -78,4 +78,8 @@
       <Filter>imgui\imgui</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="glew32-runtime-linkage.props" />
+    <None Include="preprocessor-defines.props" />
+  </ItemGroup>
 </Project>

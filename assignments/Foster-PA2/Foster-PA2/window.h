@@ -19,7 +19,7 @@ class Window
         return gWindow;
     };
 
-  private:
+  public:
     GLFWwindow* gWindow;
 
 

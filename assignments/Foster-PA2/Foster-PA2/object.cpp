@@ -2,35 +2,7 @@
 
 Object::Object()
 {
-	createVertices();
-}
-
-void Object::createVertices() {
-	Vertices = {
-				{{1.0f, -1.0f, -1.0f}, {0.0f, 0.0f, 0.0f}},
-				{{1.0f, -1.0f, 1.0f}, {1.0f, 0.0f, 0.0f}},
-				{{-1.0f, -1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}}
-	};
 	
-	//Indices = {
-	//  0, 1, 2
-	//};
-
-
-	Indices = {
-	  1, 2, 3,
-	  7, 6, 5,
-	  0, 4, 5,
-	  1, 5, 6,
-	  6, 7, 3,
-	  0, 3, 7,
-	  0, 1, 3,
-	  4, 7, 5,
-	  1, 0, 5,
-	  2, 1, 6,
-	  2, 6, 3,
-	  4, 0, 7
-	};
 }
 
 void Object::Initialize(GLint posAttribLoc, GLint colAttribLoc) {
@@ -59,9 +31,11 @@ void Object::Initialize(GLint posAttribLoc, GLint colAttribLoc) {
 	float tvec2 = glm::linearRand(-5.f, 5.f);
 	float tvec3 = glm::linearRand(-2.f, 2.f);
 
-	model = glm::translate(glm::mat4(1.0f), glm::vec3(tvec1, tvec2, tvec3));
-	model *= glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0, 1.0f, .0f));
+	translation = glm::translate(glm::mat4(1.0f), glm::vec3(tvec1, tvec2, tvec3));
+	rotation = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0, 1.0f, .0f));
+	scale = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
+	model = translation * rotation * scale;
 }
 
 Object::~Object()
@@ -102,7 +76,7 @@ void Object::Render(GLint posAttribLoc, GLint colAttribLoc)
 
 	// Draw call to OpenGL
 	glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
-
+	//glFramebuffer
 	// disable the vertex attributes
 	glDisableVertexAttribArray(posAttribLoc);
 	glDisableVertexAttribArray(colAttribLoc);

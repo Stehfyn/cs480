@@ -1,5 +1,5 @@
 #include "window.h"
-
+#include "ImGuiLog.h"
 using namespace std;
 
 Window::Window(const char* name, int* width, int* height)
@@ -21,9 +21,9 @@ Window::Window(const char* name, int* width, int* height)
 
   // Create window
   gWindow = glfwCreateWindow(*width, *height, name, NULL, NULL);
-
+  
   glfwMakeContextCurrent(gWindow);
-
+  ImGuiLog::GetCoreLogger()->AddLog("%d", gWindow);
   this->Initialize();
 }
 
@@ -39,7 +39,7 @@ bool Window::Initialize()
 {
     // Start SDL
     if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
 
 
     // Any other Window Initialization goes here

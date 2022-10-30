@@ -37,5 +37,9 @@ void Cube::createVertices()
 }
 void Cube::Update(long long dt)
 {
-	model *= glm::rotate(glm::mat4(1.0f), angle * dt, glm::vec3(0, 1.0f, .0f));
+
+	translation = glm::translate(translation, m_speed);
+	rotation *= glm::rotate(glm::mat4(1.0f), (m_Clockwise) ? -.01f:.01f, glm::vec3(0.0f, 1.0f, 0.0f));
+
+	model = translation * rotation * scale;
 }

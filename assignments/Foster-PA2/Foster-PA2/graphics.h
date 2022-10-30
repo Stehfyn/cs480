@@ -9,6 +9,7 @@ using namespace std;
 #include "shader.h"
 #include "object.h"
 #include "cube.h"
+#include "triangle.h"
 
 class Graphics
 {
@@ -21,7 +22,8 @@ class Graphics
 
     Object* getInteractWith();
 
-    Object* getTriangle() { return m_triangle; }
+    Triangle* getTriangle() { return m_triangle; }
+    Cube* getCube() { return m_cube; }
 
   private:
     std::string ErrorString(GLenum error);
@@ -35,8 +37,8 @@ class Graphics
     GLint m_vertPos;
     GLint m_vertCol;
 
-    Object* m_triangle;
-    Object* m_cube;
+    Triangle* m_triangle;
+    Cube* m_cube;
 
 };
 

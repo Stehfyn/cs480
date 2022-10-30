@@ -81,12 +81,11 @@ bool Graphics::Initialize(int width, int height)
   m_vertCol = m_shader->GetAttribLocation("v_color");
 
   // Create the object
-  m_triangle = new Object();
+  m_triangle = new Triangle();
   m_triangle->Initialize(m_vertPos, m_vertCol);
 
   m_cube = new Cube();
   m_cube->Initialize(m_vertPos, m_vertCol);
-  m_cube->createVertices();
   
   //enable depth testing
   glEnable(GL_DEPTH_TEST);
@@ -105,7 +104,8 @@ void Graphics::Update(long long dt, glm::vec3 speed)
 void Graphics::Render()
 {
   //clear the screen
-  glClearColor(0.5, 0.2, 0.2, 1.0);
+  //glClearColor(0.5, 0.2, 0.2, 1.0);
+  glClearColor(0.0, 0.0, 0.0, 1.0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   // Start the correct program
@@ -120,7 +120,7 @@ void Graphics::Render()
   m_triangle->Render(m_vertPos, m_vertCol);
   glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_cube->GetModel()));
   m_cube->Render(m_vertPos, m_vertCol);
-
+  //glGetFramebuffer
 
   // Get any errors from OpenGL
   auto error = glGetError();

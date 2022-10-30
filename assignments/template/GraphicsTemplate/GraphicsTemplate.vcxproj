@@ -187,10 +187,6 @@
     <ClInclude Include="..\..\vendor\include\imgui\imstb_textedit.h" />
     <ClInclude Include="..\..\vendor\include\imgui\imstb_truetype.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="glew32-runtime-linkage.props" />
-    <None Include="preprocessor-defines.props" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
